@@ -5,12 +5,16 @@ import {AppContext} from "../../Context/AppProvider";
 import {useHistory} from 'react-router-dom'
 
 const SidebarStyled = styled.div`
-  background-color: #445760;
+  background-image: linear-gradient(#1976d2, #569ce1);
   color: #1a1b1b;
   height: 100vh;
+  border-radius: 10px;
 
   .chanel {
+    margin-top: 10px;
     width: 100%;
+    height: 40px;
+    border-radius: 20px;
     margin-bottom: 3px;
   }
 `;
@@ -18,39 +22,46 @@ const SidebarStyled = styled.div`
 
 export default function Sidebar() {
     const history = useHistory();
-    const {setSelectedTabChanel, setSelectedTabAcc, setDangXuat} = useContext(AppContext);
+    const {setSelectedTabChanel, setSelectedTabAcc, setDangXuat, setIsTreeMnd} = useContext(AppContext);
 
     const dangXuat = () => {
         setDangXuat(true)
     }
 
-    function handleOnSb() {
+    function openAccMng() {
         setSelectedTabChanel(false)
+        setIsTreeMnd(false)
         setSelectedTabAcc(true)
     }
 
-    function handleOnSb1() {
+    function openTreeMng() {
+        setSelectedTabChanel(false)
+        setSelectedTabAcc(false)
+        setIsTreeMnd(true)
+    }
+
+    function openFarmMng() {
         setSelectedTabChanel(true)
+        setIsTreeMnd(false)
         setSelectedTabAcc(false)
     }
 
     return (
         <SidebarStyled>
-            <Row>
-                <Col span={24}>
+            <Row justify={"center"}>
+
+                <Col span={23}>
                     <Button className={"chanel"} onClick={() => {
-                        handleOnSb1()
-                    }}>Quản lý vườn</Button>
+                        openAccMng()
+                    }}>Quản lý tài khoản</Button>
                 </Col>
-                <Col span={24}>
+                <Col span={23}>
                     <Button className={"chanel"} onClick={() => {
-                        handleOnSb()
-                    }}>Quản tài khoản</Button>
+                        openTreeMng()
+                    }}>Quản lý cây trồng</Button>
                 </Col>
 
-                <Col span={24}>
-                    <Button className={"chanel"} onClick={dangXuat}>Đăng xuất</Button>
-                </Col>
+
             </Row>
         </SidebarStyled>
     );

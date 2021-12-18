@@ -2,6 +2,8 @@ import React, {useContext} from 'react';
 import {Modal} from 'antd'
 import {AppContext} from "../../Context/AppProvider";
 import {useHistory} from "react-router-dom"
+import {reactLocalStorage} from 'reactjs-localstorage';
+import {SIGNIN} from "../value_const";
 
 
 export default function EditChanel() {
@@ -9,8 +11,8 @@ export default function EditChanel() {
     const {dangXuat, setDangXuat} = useContext(AppContext);
     const handleOK = () => {
         setDangXuat(false)
-        localStorage.removeItem("id")
-        history.push('/login')
+        reactLocalStorage.clear()
+        history.push(SIGNIN)
     }
     const handleCancel = () => {
         setDangXuat(false)

@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 export const AppContext = React.createContext();
 export default function AppProvider({children}) {
     const [selectedTabChanel, setSelectedTabChanel] = useState(false);
-    const [selectedTabAcc, setSelectedTabAcc] = useState(false);
+    const [selectedTabAcc, setSelectedTabAcc] = useState(true);
     const [isAddChanel, setIsAddChanel] = useState(false);
     const [isAddAcc, setIsAddAcc] = useState(false);
     const [editchanel, setEditchanel] = useState(false);
@@ -13,10 +13,7 @@ export default function AppProvider({children}) {
     const [xoaChanel, setXoachanel] = useState(false);
     const [editAcc, setEditAcc] = useState(false);
     const [isresult, setIsresult] = useState(false)
-    const [isKenhyt, setIskenhyt] = useState(false)
-    const [kenhYt, setKenhYt] = useState(false)
-    const [listviewChanel, setListviewChanel] = useState(false)
-    const [lichsuNghe, setLichsuNghe] = useState(false)
+    const [isTreeMng, setIsTreeMnd] = useState(false)
 
 
     return (
@@ -24,8 +21,7 @@ export default function AppProvider({children}) {
             selectedTabChanel, setSelectedTabChanel, selectedTabAcc, setSelectedTabAcc,
             isAddChanel, setIsAddChanel, isAddAcc, setIsAddAcc, editchanel, setEditchanel,
             dangXuat, setDangXuat, theloai, setTheloai, xoaAcc, setXoaAcc, xoaChanel, setXoachanel,
-            editAcc, setEditAcc,isresult, setIsresult, isKenhyt, setIskenhyt, kenhYt, setKenhYt,
-            listviewChanel, setListviewChanel, lichsuNghe, setLichsuNghe
+            editAcc, setEditAcc, isresult, setIsresult, isTreeMng, setIsTreeMnd
         }}>
             {children}
         </AppContext.Provider>

@@ -84,7 +84,7 @@ export default function AccountManager() {
             <MessListStyle key={'1'}>
                 {
                     listAcc.map(val =>
-                        <AccountList key={val.password} accName={val.username} AccPass={val.password}
+                        <AccountList key={val.password} accName={val.username}
                                      AccQuyen={val.phoneNumber} accid={"0"}/>
                     )
                 }

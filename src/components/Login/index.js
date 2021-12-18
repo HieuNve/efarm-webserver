@@ -5,7 +5,8 @@ import {AppContextChanel} from "../../Context/AppChanel";
 import styled from "styled-components";
 import logo from "../../assets/images/logoblack.png"
 import axios from "axios";
-import {ADMIN} from "../router";
+import {ADMIN, ID, NAME} from "../value_const";
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 const {Title} = Typography;
 // const logo = require("../../assets/images/logoblack.png")
@@ -25,7 +26,7 @@ const LoginStyle = styled.div`
 export default function Login() {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
-    const {setIdAcc} = React.useContext(AppContextChanel)
+    const {setIdAcc, setAccName} = React.useContext(AppContextChanel)
     const history = useHistory()
     const handleInputChange = (e) => {
         setUsername(e.target.value);
@@ -50,9 +51,11 @@ export default function Login() {
 
             requetLogin().then(res => {
                 console.log(res.data.success)
-                if (res.data.success === 1){
+                if (res.data.success === 1) {
                     history.push(ADMIN)
-                }else {
+                    reactLocalStorage.set(ID, res.data.uuid)
+                    reactLocalStorage.set(NAME, username)
+                } else {
                     alert("Thông tin tài khoản mật khẩu không chính xác")
                 }
             })

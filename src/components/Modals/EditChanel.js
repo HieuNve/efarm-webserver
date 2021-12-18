@@ -63,7 +63,7 @@ export default function EditChanel() {
     return (
         <div>
             <Modal
-                title={"Edit Chanel"}
+                title={"Edit FarmManeger"}
                 visible={editchanel}
                 onOk={handleOK}
                 onCancel={handleCancel}
